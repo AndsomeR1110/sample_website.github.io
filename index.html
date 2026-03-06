@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AndsomeR | 个人空间</title>
+    <!-- Google Fonts: Noto Serif SC 中文衬线字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 全局装饰 - 水墨点 -->
+    <div class="ink-decoration">
+        <div class="ink-splash" style="top: 10%; left: 5%; width: 120px; height: 120px;"></div>
+        <div class="ink-splash" style="top: 60%; right: 8%; width: 180px; height: 180px;"></div>
+        <div class="ink-splash" style="bottom: 20%; left: 15%; width: 100px; height: 100px;"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="logo" onclick="showHome()">
+                <img src="Logo.png" alt="AndsomeR Logo" class="logo-img">
+                <span class="logo-text">AndsomeR</span>
+            </button>
+            <div class="nav-links">
+                <button onclick="showHome()" class="nav-link">首页</button>
+                <button onclick="scrollToSection('posts-section')" class="nav-link">文字</button>
+                <button onclick="scrollToSection('footer-section')" class="nav-link">关于</button>
+            </div>
+            <button id="theme-toggle" aria-label="切换主题">
+                <span class="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 首页视图 -->
+        <div id="view-home">
+            <!-- Hero 区域 -->
+            <section class="hero-section">
+                <!-- 角落装饰 -->
+                <div class="corner-decoration corner-tl"></div>
+                <div class="corner-decoration corner-br"></div>
+
+                <div class="hero-content">
+                    <!-- 装饰线 -->
+                    <div class="divider-line animate-fade-in">
+                        <div class="line"></div>
+                        <span class="divider-text">Personal Space</span>
+                        <div class="line"></div>
+                    </div>
+
+                    <!-- 主标题 -->
+                    <h1 class="hero-title animate-ink-spread">
+                        在有序的数据世界里<br>
+                        <span class="highlight">做一个随机的变量</span>
+                    </h1>
+
+                    <!-- 副标题 -->
+                    <p class="hero-subtitle animate-fade-in" style="animation-delay: 0.3s;">
+                        数据科学 · 生活随笔 · 少年游
+                    </p>
+
+                    <!-- 描述 -->
+                    <p class="hero-desc animate-fade-in" style="animation-delay: 0.5s;">
+                        这里是 AndsomeR 的数字花园<br>
+                        记录那些无法被预测的"异常值"
+                    </p>
+
+                    <!-- 装饰印章 -->
+                    <div class="seal animate-fade-in" style="animation-delay: 0.7s;">
+                        <div class="seal-box">
+                            <span>少年<br>游</span>
+                        </div>
+                    </div>
+
+                    <!-- 滚动指示 -->
+                    <button class="scroll-indicator" onclick="scrollToSection('posts-section')">
+                        <span>开启阅读</span>
+                        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M19 12l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 文章列表区域 -->
+            <section id="posts-section" class="posts-section">
+                <div class="section-header">
+                    <h2 class="section-title">文字</h2>
+                    <p class="section-subtitle">点击文章标题，即可阅读</p>
+                </div>
+
+                <div class="posts-grid">
+                    <!-- 文章卡片 1 -->
+                    <article class="post-card" onclick="showPost('post-intro')">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="post-date">2025-12-06</span>
+                                <span class="post-tag">随笔</span>
+                            </div>
+                            <h3 class="post-title">在有序的数据世界里，做一个随机的变量</h3>
+                            <p class="post-excerpt">如果此刻通过网络线路，把镜头切换到这个网站背后的现实世界，你大概率会看到这样一个画面，那可能是一个温暖的午后，阳光懒洋洋地洒进房间...</p>
+                            <div class="card-footer">
+                                <span class="read-more">阅读全文 →</span>
+                            </div>
+                        </div>
+                        <!-- 悬停装饰 -->
+                        <div class="card-hover-line"></div>
+                    </article>
+
+                    <!-- 文章卡片 2 -->
+                    <article class="post-card" onclick="showPost('post-poem')">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="post-date">2025-12-06</span>
+                                <span class="post-tag">诗歌</span>
+                            </div>
+                            <h3 class="post-title">《跨越银河的温柔》</h3>
+                            <p class="post-excerpt">若梁祝未曾化蝶，背影可曾刻骨铭心?若牛女未渡银河，回眸是否一眼万年?我想，情之所起，皆是必然...</p>
+                            <div class="card-footer">
+                                <span class="read-more">阅读全文 →</span>
+                            </div>
+                        </div>
+                        <div class="card-hover-line"></div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- 详情视图 -->
+        <div id="view-detail" class="hidden">
+            <div class="detail-container">
+                <button class="back-btn" onclick="showHome()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    返回首页
+                </button>
+
+                <!-- 自我介绍文章 -->
+                <article id="post-intro" class="detail-content hidden">
+                    <header class="article-header">
+                        <div class="article-meta">
+                            <span class="article-date">2025-12-06</span>
+                            <span class="article-tag">随笔</span>
+                        </div>
+                        <h1 class="article-title">AndsomeR：在有序的数据世界里，做一个随机的变量</h1>
+                    </header>
+
+                    <div class="article-body">
+                        <p class="article-intro">如果此刻通过网络线路，把镜头切换到这个网站背后的现实世界，你大概率会看到这样一个画面：</p>
+
+                        <p>那可能是一个温暖的午后，阳光懒洋洋地洒进房间。并没有什么代码在屏幕上疯狂滚动，他正窝在椅子里打着游戏，手边是一包拆开的<strong>奥利奥</strong>和几块小面包，口渴了就顺手吸一口奶茶。</p>
+
+                        <p>这就是 <strong>AndsomeR</strong>。在互联网的无数节点中，他是一个普通的数据科学与大数据技术专业的大学生；而在这里，他是这个小小数字空间的唯一主人。</p>
+
+                        <h2>关于"不清洗"的生活数据</h2>
+
+                        <p>作为一名和数据打交道的学生，AndsomeR 每天的课业大概都在教他如何清洗数据、剔除异常值、寻找规律。但在生活这庞大的数据集里，他却是那个最不喜欢"循规蹈矩"的分析师。</p>
+
+                        <p>他坦言自己不够自律，偶尔熬夜，甚至会耽搁正事。但在他的算法里，生活的魅力恰恰在于那些无法被预测的"脏数据"和"异常值"：</p>
+
+                        <blockquote>
+                            比如突如其来的食欲，让他跑去麦当劳吃一个喜欢的汉堡；<br>
+                            比如傍晚抬头时，偶然撞见天边一抹粉红色的晚霞。
+                        </blockquote>
+
+                        <p>对他来说，如果人生是一张被完美清洗过的 Excel 表，那未免太无聊了。他更愿意做一个随性的体验派，拥抱那些充满变量的瞬间。</p>
+
+                        <h2>这个网站：一场迟到的圆梦</h2>
+
+                        <p>搭建这个网站，并不是为了展示什么高深莫测的技术（虽然他最近沉迷于折腾 Gemini 3.0 这样的前沿 AI，并乐在其中），而更多是为了圆一个儿时的梦。</p>
+
+                        <p>小时候觉得拥有一个个人网站是件"很酷"的事，如今有了便宜的域名，这个梦便落地生根。这里不是展示完美的橱窗，更像是一个碎碎念的<strong>树洞</strong>，或者是他精心打理的<strong>数字花园</strong>。</p>
+
+                        <h2>永远的"少年游"</h2>
+
+                        <p>如果你问 AndsomeR 如何定义自己，他会避开"卷王"或"摆烂"这些极端的标签。他既不想活得苦大仇深，也不想彻底随波逐流。他最珍视的标签是——<strong>"少年"</strong>。</p>
+
+                        <p>这并非指年龄，而是一种状态：保持好奇，保持对新鲜事物的敏锐，保持那份"欲买桂花同载酒"的热忱。尽管他也深知"最是人间留不住，朱颜辞镜花辞树"，但也正因时光易逝，那个哪怕无人问津也想要折腾点什么的劲头，才显得尤为珍贵。</p>
+
+                        <h2>写在最后</h2>
+
+                        <p>在这个网站里，你可能会看到他平平淡淡的生活记录，或是深夜里的一点情绪波动。如果这些文字能给你带来一点点小惊喜，他会很开心；如果不能，也无所谓。</p>
+
+                        <blockquote class="final-quote">
+                            "这里只是我的碎片，看过就忘了吧，祝你今天开心。"
+                        </blockquote>
+                    </div>
+                </article>
+
+                <!-- 诗歌文章 -->
+                <article id="post-poem" class="detail-content hidden">
+                    <header class="article-header poem-header">
+                        <div class="article-meta">
+                            <span class="article-date">2025-12-06</span>
+                            <span class="article-tag">诗歌</span>
+                        </div>
+                        <h1 class="article-title poem-title">《跨越银河的温柔》</h1>
+                    </header>
+
+                    <div class="article-body poem-body">
+                        <div class="poem-stanza">
+                            <p>若梁祝未曾化蝶，背影可曾刻骨铭心？</p>
+                            <p>若牛女未渡银河，回眸是否一眼万年？</p>
+                            <p>我想，</p>
+                            <p>情之所起，皆是必然。</p>
+                        </div>
+
+                        <div class="poem-stanza">
+                            <p>曾叹樱花漫天，粉红易逝，</p>
+                            <p>曾惜烟火绚烂，瞬息成灰。</p>
+                            <p>世间美好，总是匆匆。</p>
+                            <p>直到微风吻上你的嘴角，</p>
+                            <p>直到暖阳落在你的眉梢。</p>
+                        </div>
+
+                        <div class="poem-stanza">
+                            <p class="poem-center">原来</p>
+                        </div>
+
+                        <div class="poem-stanza">
+                            <p>紧扣十指，人间处处皆是樱花雨，</p>
+                            <p>对视一笑，心头时时盛开烟火花。</p>
+                        </div>
+
+                        <div class="poem-stanza">
+                            <p>世俗的高墙，锁不住相思的魂，</p>
+                            <p>迢迢的银河，隔不断相守的心。</p>
+                            <p>春日迟迟，愿共赏落英缤纷，</p>
+                            <p>暮色苍苍，愿同看灯火阑珊。</p>
+                        </div>
+
+                        <div class="poem-stanza">
+                            <p>莫问天意何时许，人间好景只为你。</p>
+                            <p>你在侧，即是良辰，</p>
+                            <p>你在望，便是晴空。</p>
+                        </div>
+
+                        <div class="poem-stanza">
+                            <p>正如极圈冰冷，却有港口终年不冻，</p>
+                            <p>那是暖流跋涉万里的深情。</p>
+                            <p>我愿化作那股暖流，穿过深海与长夜，</p>
+                            <p>带你去看名为永恒的极光。</p>
+                        </div>
+
+                        <div class="poem-stanza final-stanza">
+                            <p>琴瑟在御，岁月静好。</p>
+                            <p>一寸相思，一寸欢喜。</p>
+                            <p>愿年年七夕，往后朝夕，</p>
+                            <p>有你，有我。</p>
+                        </div>
+
+                        <div class="poem-image-container">
+                            <img src="poem_illustration.png" alt="银河插画" class="poem-image">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer id="footer-section" class="footer">
+        <!-- 装饰分隔线 -->
+        <div class="footer-divider">
+            <div class="divider-line-long"></div>
+            <div class="divider-diamond"></div>
+            <div class="divider-line-long"></div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3 class="footer-name">AndsomeR</h3>
+                <p class="footer-desc">在有序中寻找随机，在平凡中发现诗意</p>
+            </div>
+
+            <!-- 装饰诗句 -->
+            <div class="footer-quote">
+                <p class="quote-text">"欲买桂花同载酒，终不似，少年游"</p>
+                <p class="quote-source">—— 宋 · 刘过《唐多令》</p>
+            </div>
+
+            <!-- 装饰元素 -->
+            <div class="footer-decoration">
+                <div class="deco-line"></div>
+                <div class="deco-dot"></div>
+                <div class="deco-line"></div>
+            </div>
+
+            <!-- 版权 -->
+            <div class="footer-copyright">
+                <p>用 <span class="heart">♥</span> 与代码构建</p>
+                <p>&copy; 2025 AndsomeR · 个人空间</p>
+            </div>
+
+            <!-- 底部装饰点 -->
+            <div class="footer-dots">
+                <div class="dot small"></div>
+                <div class="dot medium"></div>
+                <div class="dot large"></div>
+                <div class="dot medium"></div>
+                <div class="dot small"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

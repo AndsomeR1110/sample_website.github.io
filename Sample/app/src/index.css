@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 23% 94%;
+    --foreground: 0 0% 10%;
+    --card: 40 23% 94%;
+    --card-foreground: 0 0% 10%;
+    --popover: 40 23% 94%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 40 23% 94%;
+    --secondary: 40 10% 85%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 40 10% 85%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 350 75% 44%;
+    --accent-foreground: 40 23% 94%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 10% 80%;
+    --input: 40 10% 80%;
+    --ring: 350 75% 44%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif;
+    background-color: #F5F0E8;
+    background-image: 
+      radial-gradient(ellipse at 20% 80%, rgba(0,0,0,0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.02) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-blend-mode: normal, normal, soft-light;
+    background-size: auto, auto, 200px 200px;
+  }
+}
+
+/* 水墨晕染动画 */
+@keyframes inkSpread {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(10px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes inkFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes scrollIndicator {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-ink-spread {
+  animation: inkSpread 1.2s ease-out forwards;
+}
+
+.animate-ink-fade-in {
+  animation: inkFadeIn 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-scroll-indicator {
+  animation: scrollIndicator 2s ease-in-out infinite;
+}
+
+/* 水墨文字效果 */
+.ink-text {
+  text-shadow: 
+    2px 2px 4px rgba(0,0,0,0.1),
+    -1px -1px 2px rgba(255,255,255,0.5);
+}
+
+/* 书法字体样式 */
+.calligraphy {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+/* 诗歌正文样式 */
+.poem-content {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 400;
+  line-height: 2.2;
+  letter-spacing: 0.1em;
+}
+
+/* 水墨按钮效果 */
+.ink-button {
+  @apply relative overflow-hidden transition-all duration-300;
+  background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.ink-button::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: radial-gradient(ellipse at center, rgba(196,30,58,0.1) 0%, transparent 70%);
+}
+
+.ink-button:hover::before {
+  @apply opacity-100;
+}
+
+.ink-button:hover {
+  @apply transform -translate-y-0.5;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* 卡片水墨效果 */
+.ink-card {
+  @apply relative;
+  background: rgba(245,240,232,0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 30px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.ink-card::before {
+  content: '';
+  @apply absolute inset-0 pointer-events-none;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: inherit;
+}
+
+/* 装饰性水墨元素 */
+.ink-splash {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.3);
+}
+
+/* 选中文字样式 */
+::selection {
+  background: rgba(196,30,58,0.2);
+  color: inherit;
+}
+
+/* 诗歌切换过渡 */
+.poem-transition-enter {
+  opacity: 0;
+  transform: translateX(50px);
+  filter: blur(10px);
+}
+
+.poem-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+  transition: all 0.6s ease-out;
+}
+
+.poem-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+.poem-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-50px);
+  filter: blur(10px);
+  transition: all 0.6s ease-out;
+}
+
+/* 响应式字体大小 */
+@media (max-width: 768px) {
+  .poem-content {
+    font-size: 1.1rem;
+    line-height: 2;
+  }
+  
+  .calligraphy {
+    letter-spacing: 0.1em;
+  }
+}
+
+/* 宣纸纹理叠加 */
+.rice-paper-texture {
+  position: relative;
+}
+
+.rice-paper-texture::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none opacity-30;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
